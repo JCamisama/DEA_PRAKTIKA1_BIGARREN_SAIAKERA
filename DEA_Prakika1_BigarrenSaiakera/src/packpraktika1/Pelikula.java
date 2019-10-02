@@ -1,5 +1,5 @@
 package packpraktika1;
-import java.util.ArrayList;
+
 
 public class Pelikula{
 	
@@ -24,6 +24,26 @@ public class Pelikula{
 		System.out.println(this.izena);
 	}
 	
-	//public void gehituAktorea
+	
+	public void gehituDirua(int pZenbatekoa){
+		
+		this.diruBilketa = this.diruBilketa + pZenbatekoa;
+	}
+
+	
+	public ListaAktoreak pelikularenAktoreakBueltatu() {
+		
+		return this.jardunDutenak;
+	}
+	
+	public String getIzena(){
+		
+		return this.izena;
+	}
+	
+	public boolean bilatzekoPelikula(Pelikula pFilma) {
+		
+		return this.izena.equals(pFilma.getIzena());
+	}
 
 }

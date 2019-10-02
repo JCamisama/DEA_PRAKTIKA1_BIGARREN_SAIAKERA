@@ -133,7 +133,39 @@ public class ListaAktoreak {
 			this.zerrenda.set(i, bateratua.get(i-pHasiera));
 		}
 		
+	}
+	
+	
+	/************************************JONPORT**********************************************************/
+	public Aktorea aktoreaBilatu(Aktorea pAktore) {
 		
+		Iterator<Aktorea>	itr				= this.getIteradorea();
+		Aktorea				egungoAktorea	= null;
+		boolean				topatua			= false;
+		
+		while( itr.hasNext() && !topatua ){
+			
+			egungoAktorea = itr.next();
+			
+			if (egungoAktorea.bilatzekoAktorea(pAktore)) {
+				
+				topatua = true;	
+				System.out.println("Zure aktorea listan dago");								
+			}			
+		}
+		
+		if (!topatua) {
+			
+			System.out.println("Zure aktorea ez dago listan");
+			egungoAktorea	= null;
+		}
+		
+	return egungoAktorea;
 		
 	}
+	
+	
+
 }
+
+

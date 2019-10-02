@@ -60,6 +60,17 @@ public class AktoreGuztiak {
 		return this.zerrenda.values().iterator();
 	}
 	
+	
+	public Aktorea aktoreaBilatu(String pIzena){
+		
+		Aktorea aktoreHau = null;
+		
+		this.zerrenda.get(pIzena);
+		
+		
+		return aktoreHau;
+		
+	}
 	/*public ListaAktoreak elkartuOrdenatu(){
 		
 		ListaAktoreak zerrendaHau = this.zerrenda;

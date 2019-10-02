@@ -47,6 +47,18 @@ public class Aktorea {
 		
 		return this.izena;
 	}
+	
+	/****************************************JONPORT**********************************************/
+	
+	public boolean bilatzekoAktorea(Aktorea pAktore) {
 		
+		return this.izena.equals(pAktore.getIzena());
+	}
+
+	
+	public ListaPelikulak aktorearenPelikulakBueltatu() {
+		
+		return this.starringPelikula;
+	}
 		
 }

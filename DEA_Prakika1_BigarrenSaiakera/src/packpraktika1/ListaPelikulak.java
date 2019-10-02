@@ -43,4 +43,32 @@ public class ListaPelikulak {
 		
 	}
 	
+	/********************************************JONPORT*********************************/
+	public Pelikula pelikulaBilatu(Pelikula pFilma) {
+		
+		Iterator<Pelikula>	itr				= this.getIteradorea();
+		Pelikula			egungoPelikula	= null;
+		boolean				topatua			= false;
+		
+		while( itr.hasNext() && !topatua){
+			
+			egungoPelikula = itr.next();
+			
+			if (egungoPelikula.bilatzekoPelikula(pFilma)) {
+				
+				topatua = true;	
+				System.out.println("Zure pelikula listan dago");								
+			}			
+		}
+		
+		if (!topatua) {
+			
+			System.out.println("Zure pelikula ez dago listan.");
+			egungoPelikula	= null;
+		}
+		return egungoPelikula;
+		
+
+	
+	}
 }
