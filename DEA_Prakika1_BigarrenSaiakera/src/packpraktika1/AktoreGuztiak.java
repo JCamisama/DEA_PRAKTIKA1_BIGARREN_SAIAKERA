@@ -33,6 +33,7 @@ public class AktoreGuztiak {
 		this.zerrenda.put(pAktore.getIzena(), pAktore);
 		}
 		
+
 	}
 	
 	
