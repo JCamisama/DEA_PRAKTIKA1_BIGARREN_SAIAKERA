@@ -19,16 +19,8 @@ public class ListaAktoreak {
 		return this.zerrenda.iterator();
 	}
 	
-	public void gehituAktorea(Aktorea pAktore){
-		
-		this.zerrenda.add(pAktore);
-	}
 	
-	public void ezabatuAktorea(Aktorea pAktore){
-		
-		this.zerrenda.remove(pAktore);
-	}
-	
+
 	public void inprimatuAktoreak(){
 		
 		Iterator<Aktorea>	itr			= this.getIteradorea();
@@ -135,6 +127,36 @@ public class ListaAktoreak {
 		
 	}
 	
+	public boolean badagoAktorea(String pIzena){
+		
+		Iterator<Aktorea> 	itr			=	this.getIteradorea();
+		Aktorea				aktoreHau	=	null;
+		boolean				badago		=	false;
+		
+		while(!badago && itr.hasNext()){
+			
+			aktoreHau	=	itr.next();
+			badago		=	(pIzena == aktoreHau.getIzena());
+		}
+			
+		return badago;	
+		
+	}
+	
+	public void ezabatuAktorea(Aktorea pAktore){
+		
+		this.zerrenda.remove(pAktore);
+		
+	}
+	
+	
+	public void gehituAktorea(Aktorea pAktore){
+		
+		if( !this.badagoAktorea(pAktore.getIzena()) ){
+			
+			this.zerrenda.add(pAktore);
+		}
+	}
 	
 	/************************************JONPORT**********************************************************/
 	public Aktorea aktoreaBilatu(Aktorea pAktore) {
