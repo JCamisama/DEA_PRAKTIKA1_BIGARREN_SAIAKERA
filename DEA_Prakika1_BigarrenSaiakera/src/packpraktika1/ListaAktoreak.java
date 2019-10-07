@@ -16,6 +16,10 @@ public class ListaAktoreak {
 
 	private Iterator<Aktorea> getIteradorea(){
 		
+		//Aurre-Baldintza:	------------------------------------------
+		//Post-Baldinta: 	Aktoreen bilduma bat bueltatuko du, Iterator interfaz bezala.
+		//Kostua:			O(n);
+		
 		return this.zerrenda.iterator();
 	}
 	
@@ -35,6 +39,11 @@ public class ListaAktoreak {
 
 	public void idatziAktoreGuztiak(PrintWriter pOutputStream){
 		
+		//Aurre-Baldintza:	Fitxategiaren kokapena/helburua  egokia da (pOutputStream).
+		/*Post-Baldinta: 	Aktoreen zerrenda bere baitan daukan fitxategia sortuko da ez bada existitzen, 
+							bestela horren gainean idatziko da. */
+		//Kostua:			O(n); Non n aktore kopurua da.
+		
 		Iterator<Aktorea> itr		= this.getIteradorea();
 		Aktorea			  aktoreHau = null;
 		
@@ -48,16 +57,28 @@ public class ListaAktoreak {
 	
 	public int luzera(){
 		
+		//Aurre-Baldintza:	-----------------------------------
+		//Post-Baldinta: 	Zerrendaren luzera bueltatuko da.
+		//Kostua:			O(n); Non n aktore kopurua da.
+		
 		return this.zerrenda.size();
 	}
 	
 	public void elkartuOrdenatu(){
+		
+		//Aurre-Baldintza:	-----------------------------------
+		//Post-Baldinta: 	Zerrenda alfabetikoki ordenatuta bueltatuko da (A-tik Z-ra)
+		//Kostua:			O( n*log(n) ); Non n aktore kopurua da.
 		
 		this.elkartuOrdenatu(this.zerrenda, 0, this.zerrenda.size()-1);
 		
 	}
 	
 	private void elkartuOrdenatu(ArrayList<Aktorea> pAktoreak, int pHasiera, int pAmaiera){
+
+		//Aurre-Baldintza:	pHasiera eta pAmaiera zerrendaren luzera baino txikiagoak izango dira.
+		//Post-Baldinta: 	Zerrenda alfabetikoki ordenatuta bueltatuko da (A-tik Z-ra).
+		//Kostua:			O( n*log(n) ); Non n aktore kopurua da.
 		
 		
 		if(pHasiera < pAmaiera){
@@ -72,12 +93,13 @@ public class ListaAktoreak {
 	
 	private  void bateratu(ArrayList<Aktorea> pAktoreak, int pHasiera, int pErdikoa, int pAmaiera){
 		
+		//Aurre-Baldintza:	pHasiera, pErdikoa eta pAmaiera zerrendaren luzera baino txikiagoak izango dira.
+		//Post-Baldinta: 	Zerrenda alfabetikoki ordenatuta bueltatuko da (A-tik Z-ra).
+		//Kostua:			O(n); Non n aktore kopurua da.
+		
 		ArrayList<Aktorea>	bateratua	= new ArrayList<Aktorea>(pAmaiera-pHasiera+1);
 		int					ezker		= pHasiera;
 		int					eskuin		= pErdikoa + 1;
-		//int					posBateratu	= 0;
-		//String				ezkerrekoa	= "";
-		//String				eskumakoa	= "";
 		Aktorea				ezkerAktore	= null;
 		Aktorea				eskuAktore	= null;
 		
@@ -129,6 +151,10 @@ public class ListaAktoreak {
 	
 	public boolean badagoAktorea(String pIzena){
 		
+		//Aurre-Baldintza:	Letra larrien eta xeheen artean desberdinduko da.
+		//Post-Baldinta: 	Zerrenda alfabetikoki ordenatuta bueltatuko da (A-tik Z-ra).
+		//Kostua:			O(n); Non n aktore kopurua da.
+		
 		Iterator<Aktorea> 	itr			=	this.getIteradorea();
 		Aktorea				aktoreHau	=	null;
 		boolean				badago		=	false;
@@ -145,12 +171,22 @@ public class ListaAktoreak {
 	
 	public void ezabatuAktorea(Aktorea pAktore){
 		
-		this.zerrenda.remove(pAktore);
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Aktorea ez bada null eta aktoreen zerrenda  badago, zerrendatik ezabatuko da.
+		//Kostua:			O(n); Non n aktore kopurua da.
 		
+		if( pAktore != null && this.badagoAktorea(pAktore.getIzena()) ){
+			
+			this.zerrenda.remove(pAktore);
+		}
 	}
 	
 	
 	public void gehituAktorea(Aktorea pAktore){
+
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Aktorea ez bada null eta ez badago zerrendan, gehituko da.
+		//Kostua:			O(n); Non n aktore kopurua da.
 		
 		if( !this.badagoAktorea(pAktore.getIzena()) ){
 			
@@ -158,8 +194,13 @@ public class ListaAktoreak {
 		}
 	}
 	
-	/************************************JONPORT**********************************************************/
+	
+	
 	public Aktorea aktoreaBilatu(Aktorea pAktore) {
+		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Aktorea bueltatuko da zerrendan badago, bestela null.
+		//Kostua:			O(n); Non n aktore kopurua da.
 		
 		Iterator<Aktorea>	itr				= this.getIteradorea();
 		Aktorea				egungoAktorea	= null;

@@ -26,6 +26,10 @@ public class IrakurketakEtaIdazketak {
 	
 	public void fitxategiaIrakurri(){
 		
+		//Aurre-Baldintza:	Fitxategia irekita egongo da, klase honetako fitxategiaIreki() metodo erabiltzen.
+		//Post-Baldinta: 	Aktoreen eta pelikulen zerrenda nagusiak beteta egongo dira, baita aktore-pelikula erlazioak ere.
+		//Kostua:			O(n*m*konstantea); Non n pelikulen kopurua da, eta m aktoreen kopurua.	
+		
 		while(eskanerHau.hasNextLine()){
 			
 			String		lerroa			= this.eskanerHau.nextLine();
@@ -39,6 +43,13 @@ public class IrakurketakEtaIdazketak {
 	}
 	
 	public void pelikulaAktoreakHasieratu(String pFilmaIzena, String[] pAktoreakIzenak){
+		
+		//Aurre-Baldintza:	Pelikularen izena eta aktoreen izenen zerrenda ondo irakurri dira.
+		/*Post-Baldinta: 	Pelikula objektua pelikulen zerrenda nagusian gehituta egongo da, aktore
+		 					berriak aktoreen zerrenda nagusian gehituko dira. Gainera, pelikularen eta
+		 					aktoreen arteko erlazioa finkatuta egongo da. */
+		//Kostua:			O(m*konstantea); non m aktoreen kopurua den.		
+
 		
 		PelikulaGuztiak	peliMaster	= PelikulaGuztiak.getNirePelikulak();
 		AktoreGuztiak	aktorMaster	= AktoreGuztiak.getNireAktoreak();
@@ -63,10 +74,19 @@ public class IrakurketakEtaIdazketak {
 	
 	public void fitxategiaItxi(){
 		
+		//Aurre-Baldintza:	Fitxategia aurretik ireki da.
+		//Post-Baldinta: 	Fitxategia itxita egongo da.
+		//Kostua:			O(1)
+		
 		this.eskanerHau.close();
 	}
 	
 	public void AktoreenZerrendaIdatzi(){
+		
+		//Aurre-Baldintza:	Fitxategiaren kokapena/helburua  metodoaren barruan dagoena da.
+		/*Post-Baldinta: 	Aktoreen zerrenda bere baitan daukan fitxategia sortuko da ez bada existitzen, 
+							bestela horren gainean idatziko da. */
+		//Kostua:			O(n); Non n aktore kopurua da.
 		
 		String filename = "C:\\Users\\GySyX\\Desktop\\Aktoreak.txt";
 		

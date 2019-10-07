@@ -21,17 +21,25 @@ public class PelikulaGuztiak {
 		return PelikulaGuztiak.nirePelikulak;
 	}
 	
-	public void gehituPelikula(Pelikula pFilma){
+	public void gehituPelikula(Pelikula pFilma){//******BERRIKUSI*******************
+		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
+		//Kostua:			O(m); Non m pelikulen kopurua da.
 		
 		this.zerrenda.gehituPelikula(pFilma);
 	}
 	
 	public void ezabatuFilma(Pelikula pFilma){
 		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta pelikulen zerrendan  badago, zerrendatik ezabatuko da.
+		//Kostua:			O(m); Non m pelikulen kopurua da.
+		
 		this.zerrenda.ezabatuFilma(pFilma);
 	}
 	
-	public void inprimatuGuztiak(){
+	public void inprimatuGuztiak(){//Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
 		
 		this.zerrenda.inprimatuGuztiak();
 	}

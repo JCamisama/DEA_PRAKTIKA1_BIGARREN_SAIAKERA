@@ -15,11 +15,15 @@ public class Aktorea {
 	
 	public void gehituPelikula(Pelikula pFilma){
 		
+		//Aurre-Baldintza:	Pelikularen objektua existituko da (ListaPelikulan null kasua tratatu da, dena den)
+		//Post-Baldinta: 	Pelikula aktorearen zerrendan gehituta agertuko da.
+		//Kostua:			O(1);			
+		
 		this.starringPelikula.gehituPelikula(pFilma);
 	}
 
 	
-	public void inprimatuAktorea(){
+	public void inprimatuAktorea(){ //FROGAK EGITEKO METODOA, EZ DA MEMORIAN SARTUKO
 		
 		System.out.println("\nIzen Osoa: " + this.izena + "\n\n");
 		
@@ -27,24 +31,30 @@ public class Aktorea {
 	
 	public void idatziAktorearenIzena(PrintWriter pOutputStream){
 		
+		//Aurre-Baldintza:	Pelikularen onjektua existituko da.
+		//Post-Baldinta:	Pelikula aktoreanren zerrendan gehituta agertuko da.
+		//Kostua:			O(1);
+		
 		pOutputStream.println(this.izena);
 	}
 	
 	public boolean lehenagoDoa(Aktorea pBesteAktorea){
 		
-		return pBesteAktorea.lehenagoDoa(this.izena);
+		//Aurre-Baldintza:	pBesteAktorea-ren izena String bat izango da.
+		/*Post-Baldinta:	Alfabetoaren ordena jarraituz, aktore honen izena
+						 	pBesteAktorea-rena baino lehen badoa, True, bestela False */
+		//Kostua:			O(1);
+		
+		return this.izena.compareToIgnoreCase(pBesteAktorea.getIzena())<= 0;
 		
 	}
 	
-	private boolean lehenagoDoa(String pIzena){
-		
-		return pIzena.compareToIgnoreCase(this.izena) <= 0;
-		
-		
-	}
 	
-	public String getIzena(){
+	public String getIzena(){ //getter hau ezinbestekoa da HashMap-aren erabilera posiblea ariketaren testuinguruan
 		
+		//Aurre-Baldintza:	---------------------
+		//Post-Baldinta:	aktorearen izena bueltatuko da, String motakoa
+		//Kostua:			O(1);
 		return this.izena;
 	}
 	
@@ -52,11 +62,19 @@ public class Aktorea {
 	
 	public boolean bilatzekoAktorea(Aktorea pAktore) {
 		
+		//Aurre-Baldintza:	Letra larriak eta xeheak ezberdinduko dira.
+		//Post-Baldintza:	pAktorearen izena aktore honen izenaren berdina bada True, bestela False.
+		//Kostua:			O(1);
+		
 		return this.izena.equals(pAktore.getIzena());
 	}
 
 	
 	public ListaPelikulak aktorearenPelikulakBueltatu() {
+		
+		//Aurre-Baldintza:	----------------------------------------------
+		//Post-Baldintza:	Aktorearen pelikula guztiak ArrayList baten barruan sartuta bueltatuko dira.
+		//Kostua:			O(1);
 		
 		return this.starringPelikula;
 	}

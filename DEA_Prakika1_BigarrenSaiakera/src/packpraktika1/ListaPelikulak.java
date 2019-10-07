@@ -16,20 +16,35 @@ public class ListaPelikulak {
 	
 	private Iterator<Pelikula> getIteradorea(){
 		
+		//Aurre-Baldintza:	------------------------------------------
+		//Post-Baldinta: 	Pelikulen bilduma bat bueltatuko du, Iterator interfaz bezala.
+		//Kostua:			O(m); Non m pelikulen kopurua den
+		
 		return this.zerrenda.iterator();
 	}
 	
-	public void gehituPelikula(Pelikula pFilma){
+	public void gehituPelikula(Pelikula pFilma){//******BERRIKUSI*******************
 		
-		this.zerrenda.add(pFilma);
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
+		//Kostua:			O(m); Non m pelikulen kopurua da.
+		
+		if( pFilma != null ){
+			
+			this.zerrenda.add(pFilma);
+		}
 	}
 	
 	public void ezabatuFilma(Pelikula pFilma){
 		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta pelikulen zerrendan  badago, zerrendatik ezabatuko da.
+		//Kostua:			O(m); Non m pelikulen kopurua da.
+		
 		this.zerrenda.remove(pFilma);
 	}
 	
-	public void inprimatuGuztiak(){
+	public void inprimatuGuztiak(){//Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
 		
 		Iterator<Pelikula> itr = this.getIteradorea();
 		
@@ -43,8 +58,12 @@ public class ListaPelikulak {
 		
 	}
 	
-	/********************************************JONPORT*********************************/
+
 	public Pelikula pelikulaBilatu(Pelikula pFilma) {
+		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula bueltatuko da zerrendan badago, bestela null.
+		//Kostua:			O(m); Non m pelikulen kopurua da.
 		
 		Iterator<Pelikula>	itr				= this.getIteradorea();
 		Pelikula			egungoPelikula	= null;
