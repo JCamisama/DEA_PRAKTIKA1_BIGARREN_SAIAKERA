@@ -11,7 +11,8 @@ public class IrakurketakEtaIdazketak {
 	
 	public void fitxategiaIreki(){
 		
-		String filename = "Fitxategiak/FilmakAktoreak.txt";
+		//String filename = "Fitxategiak/FilmakAktoreak.txt";
+		String filename = "Fitxategiak/FilmsActors20162017.txt";
 		try{
 			
 			eskanerHau = new Scanner(new File(filename));
@@ -30,6 +31,7 @@ public class IrakurketakEtaIdazketak {
 		//Post-Baldinta: 	Aktoreen eta pelikulen zerrenda nagusiak beteta egongo dira, baita aktore-pelikula erlazioak ere.
 		//Kostua:			O(n*m*konstantea); Non n pelikulen kopurua da, eta m aktoreen kopurua.	
 		
+		int zenbatLerro = 0;
 		while(eskanerHau.hasNextLine()){
 			
 			String		lerroa			= this.eskanerHau.nextLine();
@@ -38,7 +40,12 @@ public class IrakurketakEtaIdazketak {
 			String[]	aktoreak		= peliAktBanatuak[1].split("\\s+&&&\\s+");
 			
 			this.pelikulaAktoreakHasieratu(pelikulaIzena, aktoreak);
+			zenbatLerro++;
 			
+			if(zenbatLerro % 10000 == 0){
+				
+				System.out.println("\nIrakurritako lerroak: " + zenbatLerro);
+			}
 		}
 	}
 	
@@ -90,11 +97,6 @@ public class IrakurketakEtaIdazketak {
 		
 		
 		String filename		= "Fitxategiak/Aktoreak.txt";
-		//String filename		= "C:/Users/GySyX/Desktop/Aktoreak.txt";
-		//String filename = "Fitxategiak/Aktoreak.txt";
-		//String filename = "Fitxategiak"+File.separator+"Aktoreak.txt";
-		//File file = new File (filename);
-		//"Fitxategiak"+File.separator+"Galdera_berdeaBiologia.txt";
 		
 		try{
 			
@@ -108,7 +110,7 @@ public class IrakurketakEtaIdazketak {
 		}
 		
 		catch (FileNotFoundException e){
-			//TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
