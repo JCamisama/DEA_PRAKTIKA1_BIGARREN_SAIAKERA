@@ -23,13 +23,13 @@ public class ListaPelikulak {
 		return this.zerrenda.iterator();
 	}
 	
-	public void gehituPelikula(Pelikula pFilma){//******BERRIKUSI*******************
+	public void gehituPelikula(Pelikula pFilma){
 		
 		//Aurre-Baldintza:	----------------------------------------------------------
 		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
 		//Kostua:			O(m); Non m pelikulen kopurua da.
 		
-		if( pFilma != null ){
+		if( pFilma != null && !this.badago(pFilma) ){
 			
 			this.zerrenda.add(pFilma);
 		}
@@ -85,9 +85,22 @@ public class ListaPelikulak {
 			System.out.println("Zure pelikula ez dago listan.");
 			egungoPelikula	= null;
 		}
-		return egungoPelikula;
 		
-
+		return egungoPelikula;
+	}
 	
+	public boolean badago(Pelikula pFilma){
+		
+		Iterator<Pelikula> 	itr			=	this.getIteradorea();
+		Pelikula			peliHau		=	null;
+		boolean				badago		=	false;
+		
+		while(!badago && itr.hasNext()){
+			
+			peliHau	=	itr.next();
+			badago	=	(pFilma.getIzena() == peliHau.getIzena());
+		}
+			
+		return badago;	
 	}
 }

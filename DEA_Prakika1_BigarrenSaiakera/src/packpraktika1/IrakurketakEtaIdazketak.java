@@ -11,7 +11,7 @@ public class IrakurketakEtaIdazketak {
 	
 	public void fitxategiaIreki(){
 		
-		String filename = "FilmakAktoreak.txt";
+		String filename = "Fitxategiak/FilmakAktoreak.txt";
 		try{
 			
 			eskanerHau = new Scanner(new File(filename));
@@ -88,10 +88,17 @@ public class IrakurketakEtaIdazketak {
 							bestela horren gainean idatziko da. */
 		//Kostua:			O(n); Non n aktore kopurua da.
 		
-		String filename = "C:\\Users\\GySyX\\Desktop\\Aktoreak.txt";
+		
+		String filename		= "Fitxategiak/Aktoreak.txt";
+		//String filename		= "C:/Users/GySyX/Desktop/Aktoreak.txt";
+		//String filename = "Fitxategiak/Aktoreak.txt";
+		//String filename = "Fitxategiak"+File.separator+"Aktoreak.txt";
+		//File file = new File (filename);
+		//"Fitxategiak"+File.separator+"Galdera_berdeaBiologia.txt";
 		
 		try{
 			
+			File file = new File (filename);
 			PrintWriter outputStream = new PrintWriter(filename);
 			AktoreGuztiak.idatziAktoreGuztiak(outputStream);
 			outputStream.flush();
