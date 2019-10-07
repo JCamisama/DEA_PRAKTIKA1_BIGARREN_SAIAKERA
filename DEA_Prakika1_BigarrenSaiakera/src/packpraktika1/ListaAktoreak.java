@@ -228,6 +228,27 @@ public class ListaAktoreak {
 	}
 	
 	
+	public boolean ordenatutaDago(){
+		
+		boolean				ordenatua 		= true;
+		Aktorea				aktoreEzker		= null;
+		Aktorea				aktoreEskuin	= null;
+		int					posizioa		= 1; //Eskuineko aktoretik hasiko da
+		
+		while( ordenatua && posizioa < this.luzera() ){
+			
+			aktoreEzker  = this.zerrenda.get(posizioa-1);
+			aktoreEskuin = this.zerrenda.get(posizioa);
+			
+			ordenatua = aktoreEzker.lehenagoDoa(aktoreEskuin);
+			
+			posizioa++;
+			
+		}
+		
+		return ordenatua;
+		
+	}
 
 }
 
