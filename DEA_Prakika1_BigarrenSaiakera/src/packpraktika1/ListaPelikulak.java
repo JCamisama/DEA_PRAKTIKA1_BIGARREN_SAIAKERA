@@ -103,4 +103,10 @@ public class ListaPelikulak {
 			
 		return badago;	
 	}
+	
+	public void erreseteatu() {
+		
+		zerrenda.clear();
+		
+	}
 }
