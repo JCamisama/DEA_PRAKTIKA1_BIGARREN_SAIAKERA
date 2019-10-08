@@ -54,6 +54,9 @@ public class ListaAktoreakTest {
 		aktore1			= null;
 		aktore2			= null;
 		aktore3			= null;
+		aktore4			= null;
+		aktore5			= null;
+				
 		zerrenda1		= null;
 	}
 

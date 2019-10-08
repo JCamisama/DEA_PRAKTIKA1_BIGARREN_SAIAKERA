@@ -89,6 +89,47 @@ public class AktoreGuztiak {
 		
 	}
 	
+	public ListaAktoreak zerrendaOrdenatuaBueltatu(){
+		
+		//Aurre-Baldintza:	------------------------------------------
+		//Post-Baldinta: 	Aktore guztien zerrenda ordenatua bueltatuko da.
+		//Kostua:			O(n + n*logn); non n aktore kopurua den.
+		
+		ListaAktoreak	  zerreHau	= new ListaAktoreak();
+		Iterator<Aktorea> itr		= AktoreGuztiak.getNireAktoreak().getAktoreenIteradorea(); //Aktoreen zerrenda bat sortzen
+		
+		//Zerrenda betetzen
+		while( itr.hasNext() ){
+			
+			zerreHau.gehituAktorea(itr.next());
+		}
+		
+		//Zerrenda ordenatzen
+		zerreHau.elkartuOrdenatu();
+		
+		return zerreHau;
+		
+	}
+
+	public Aktorea ezabatuAktoreenErregistrotik(String pIzena){
+		
+		//Aurre-Baldintza:	------------------------------------------
+		//Post-Baldinta: 	Ezabatutako aktorea bueltatuko da zerrendan badago, bestela null.
+		//Kostua:			O(1);		
+		
+		return this.zerrenda.remove(pIzena);
+	}
+
+	public int luzera(){ //Frogak egiteko inplementatuta bakarrik.
+		
+		return this.zerrenda.size();
+	}
 	
+	public void erreseteatu(){ //Frogak egiteko inplementatuta bakarrik.
+		
+		AktoreGuztiak.nireAktoreak = null;
+	}
+	
+
 
 }
