@@ -57,7 +57,7 @@ public class AktoreGuztiak {
 			
 			aktoreHau	= itr.next();
 			aktoreHau.idatziAktorearenIzena(pOutputStream);
-			//aktoreHau.inprimatuAktorea();
+			aktoreHau.inprimatuAktorea();
 			
 		}
 		
