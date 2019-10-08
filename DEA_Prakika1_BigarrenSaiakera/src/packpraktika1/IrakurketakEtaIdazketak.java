@@ -18,7 +18,7 @@ public class IrakurketakEtaIdazketak {
 			eskanerHau = new Scanner(new File(filename));
 		}
 		
-		catch(Exception e){///******TO-DO**********************
+		catch(Exception e){
 			
 			System.out.println("Fitxategia ez da aurkitu.");
 		}
