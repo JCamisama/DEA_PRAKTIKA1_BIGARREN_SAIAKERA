@@ -109,6 +109,23 @@ public class ListaPelikulak {
 		
 		this.zerrenda.add(pPelikula);
 	}
+	
+	public void ezabatuPelikulaHauetatik(String pAktoreIzena){//METODO BERRIA, JUNIT BEHAR DU
+		
+		Iterator<Pelikula> 	itr			=	this.getIteradorea();
+		Pelikula			peliHau		=	null;
+		
+
+		while(itr.hasNext()){
+			
+			peliHau	=	itr.next();
+			peliHau.AktoreaPelikulatikKendu(pAktoreIzena);
+		}
+				
+	}
+	
+	
+	
 	public void erreseteatu() {
 		
 		zerrenda.clear();

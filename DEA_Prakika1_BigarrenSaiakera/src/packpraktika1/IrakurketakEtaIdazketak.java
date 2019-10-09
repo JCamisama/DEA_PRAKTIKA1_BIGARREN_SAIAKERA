@@ -9,6 +9,16 @@ public class IrakurketakEtaIdazketak {
 	
 	private Scanner eskanerHau;
 	
+	
+	public  String irakurriString(String pMezua){ //Teklatutik irakurtzeko metodoa
+		
+		System.out.print(pMezua+": ");
+		String erantzuna	= this.eskanerHau.next();
+		
+		
+		return erantzuna;
+	}
+	
 	public void fitxategiaIreki(){
 		
 		//String filename = "Fitxategiak/FilmakAktoreak.txt";
@@ -30,7 +40,7 @@ public class IrakurketakEtaIdazketak {
 		//Aurre-Baldintza:	Fitxategia irekita egongo da, klase honetako fitxategiaIreki() metodo erabiltzen.
 		//Post-Baldinta: 	Aktoreen eta pelikulen zerrenda nagusiak beteta egongo dira, baita aktore-pelikula erlazioak ere.
 		//Kostua:			O(n*m*konstantea); Non n pelikulen kopurua da, eta m aktoreen kopurua.	
-		
+		Stopwatch kronometroa = new Stopwatch();
 		int zenbatLerro = 0;
 		while(eskanerHau.hasNextLine()){
 			
@@ -47,6 +57,7 @@ public class IrakurketakEtaIdazketak {
 				System.out.println("\nIrakurritako lerroak: " + zenbatLerro);
 			}
 		}
+		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	
 	public void pelikulaAktoreakHasieratu(String pFilmaIzena, String[] pAktoreakIzenak){
@@ -89,7 +100,7 @@ public class IrakurketakEtaIdazketak {
 		this.eskanerHau.close();
 	}
 	
-	public void AktoreenZerrendaIdatzi(){
+	public static void AktoreenZerrendaIdatzi(){
 		
 		//Aurre-Baldintza:	Fitxategiaren kokapena/helburua  metodoaren barruan dagoena da.
 		/*Post-Baldinta: 	Aktoreen zerrenda bere baitan daukan fitxategia sortuko da ez bada existitzen, 
@@ -117,11 +128,53 @@ public class IrakurketakEtaIdazketak {
 		
 	}
 
+
+    /* System.out.print("1.) Aktore baten bilaketa. \n");
+     System.out.print("2.) Aktore berri baten txertaketa.\n");
+     System.out.print("3.) Aktore baten pelikulak bueltatu.\n");
+     System.out.print("4.) Pelikula bateko aktoreak bueltatu.\n");
+     System.out.print("5.) Pelikula baten dirua gehitu, emandako kantiate batean.\n");
+     System.out.print("6.) Aktore baten ezabaketa.\n");
+
+	*/
+	/****************************MENUAREN METODOAK(Frogak egiteko bakarrik)****************************/
+	
+	public  void AktoreBatenEzabaketaMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		//Borratu nahi den aktorea bilatzen
+		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez:  ");
+		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
+		
+		//Jardun duen pelikuletatik kentzen
+		aktoreHau.ezabatuBerePelikuletatik();
+		
+		//Aktore guztien zerrendatik kentzen
+		AktoreGuztiak.getNireAktoreak().ezabatuAktoreenErregistrotik(aktoreHau.getIzena());
+		
+	}
+	public static void AktoreenZerrendaIdatziMenu(){
+		
+		IrakurketakEtaIdazketak.AktoreenZerrendaIdatzi();
+		System.out.println("\nAktoreen zerrenda proiektu honetako Fitxategiak karpetan gorde da.");
+	}
+	public static void AktoreenZerrendaOrdenatuaMenu(){
+		
+		ListaAktoreak zerreOrdenatu = AktoreGuztiak.getNireAktoreak().zerrendaOrdenatuaBueltatu();
+		System.out.println("Aktoreen zerrenda ordenatua inprimatuko da: \n\n");
+		zerreOrdenatu.inprimatuAktoreak();
+	}
+	public static void amaieraMenu(){
+		
+		System.out.println("\nPrograma amaitu da.");
+	}
+	
+	
 	
 	public static void main(String[] args){
 		
 		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak();
 		
+		/*
 		Stopwatch kronometroa = new Stopwatch();
 		cHau.fitxategiaIreki();
 		cHau.fitxategiaIrakurri();
@@ -132,7 +185,86 @@ public class IrakurketakEtaIdazketak {
 		//bHau.AktoreenZerrendaIdatzi();
 		
 		//cHau.AktoreenZerrendaIdatzi();
-		//PelikulaGuztiak.getNirePelikulak().inprimatuGuztiak();
+		//PelikulaGuztiak.getNirePelikulak().inprimatuGuztiak();*/
+		
+		
+		 Scanner sarrera	= new Scanner(System.in);
+		 boolean jarraitu	= true;
+
+		 int aukera;
+		 
+		 System.out.println("\t\t\t*******FILMAK ETA AKTOREAK - PRAKTIKA 1*******\n");
+		 System.out.println("Filma eta pelikula guztiak irakurriko dira orain:\n\n ");
+		 cHau.fitxategiaIreki();
+		 cHau.fitxategiaIrakurri();
+		 cHau.fitxategiaItxi();
+		 
+		 
+		 while(jarraitu){
+		        System.out.println("\t\t\t*******MENU NAGUSIA*******\n\n");
+		        System.out.print("1.) Aktore baten bilaketa. \n");
+		        System.out.print("2.) Aktore berri baten txertaketa.\n");
+		        System.out.print("3.) Aktore baten pelikulak bueltatu.\n");
+		        System.out.print("4.) Pelikula bateko aktoreak bueltatu.\n");
+		        System.out.print("5.) Pelikula baten dirua gehitu, emandako kantiate batean.\n");
+		        System.out.print("6.) Aktore baten ezabaketa.\n");
+		        System.out.print("7.) Aktoreen zerrenda fitxategi batean gorde.\n");
+		        System.out.print("8.) Aktoreen zerrenda ordenatua lortu (abizenak, izena).\n");
+		        System.out.print("9.) Amaiera.\n");
+		        
+		        System.out.print("\nSartu zure aukera: ");
+
+		        aukera = sarrera.nextInt();
+
+		        switch(aukera){
+
+		        case 1:
+		            
+		        	
+		      
+		            break;
+
+		        case 2: 
+		       
+		            break;
+
+		        case 3:
+		          
+		            break;
+
+		        case 4: 
+		        
+		            break;
+
+		        case 5:
+		         
+		            break;
+
+		        case 6: 
+		            
+		            break;
+		            
+		        case 7: 
+		            
+		        	IrakurketakEtaIdazketak.AktoreenZerrendaIdatziMenu();
+		            break;
+		            
+		        case 8: 
+		        	
+		        	IrakurketakEtaIdazketak.AktoreenZerrendaOrdenatuaMenu();
+		        	break;
+		        	
+		        case 9:
+		        	
+		        	IrakurketakEtaIdazketak.amaieraMenu();
+		        	break;
+
+		        }
+
+
+		        
+		
+	}
 	}
 
 }
