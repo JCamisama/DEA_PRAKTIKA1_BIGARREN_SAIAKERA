@@ -44,4 +44,10 @@ public class PelikulaGuztiak {
 		this.zerrenda.inprimatuGuztiak();
 	}
 
+	
+	public void pelikulaKargatu(Pelikula pPelikula){//Pelikula zerrendan sartzeko errepikapena konprobatu gabe.
+		
+		this.zerrenda.pelikulaKargatu(pPelikula);
+	}
+	
 }

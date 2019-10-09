@@ -57,7 +57,7 @@ public class AktoreGuztiak {
 			
 			aktoreHau	= itr.next();
 			aktoreHau.idatziAktorearenIzena(pOutputStream);
-			//aktoreHau.inprimatuAktorea();
+			aktoreHau.inprimatuAktorea();
 			
 		}
 		
@@ -82,7 +82,7 @@ public class AktoreGuztiak {
 		
 		Aktorea aktoreHau = null;
 		
-		this.zerrenda.get(pIzena);
+		aktoreHau = this.zerrenda.get(pIzena);
 		
 		
 		return aktoreHau;

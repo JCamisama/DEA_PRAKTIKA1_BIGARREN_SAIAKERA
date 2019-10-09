@@ -104,9 +104,16 @@ public class ListaPelikulak {
 		return badago;	
 	}
 	
+	
+	public void pelikulaKargatu(Pelikula pPelikula){
+		
+		this.zerrenda.add(pPelikula);
+	}
 	public void erreseteatu() {
 		
 		zerrenda.clear();
 		
 	}
+	
+
 }

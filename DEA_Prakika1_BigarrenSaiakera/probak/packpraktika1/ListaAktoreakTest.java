@@ -66,6 +66,7 @@ public class ListaAktoreakTest {
 		assertNotNull(zerrenda1);
 	}
 
+	/***********AKTOREEN ZERRENDA FITXATEGI BATEAN GORDE******/
 	@Test
 	public void testIdatziAktoreGuztiak() {
 		
@@ -84,7 +85,9 @@ public class ListaAktoreakTest {
 			e.printStackTrace();
 		}
 	}
-
+	/*********************************************************/
+	
+	
 	@Test
 	public void testLuzera() {
 		
@@ -302,7 +305,7 @@ public class ListaAktoreakTest {
 		assertEquals(zerrenda1.luzera(), 5); //Luzera berdina izaten jarraitzen du.
 		
 		
-		//2. Zerrenda aktore bakarra izatea gehiketa baino lehen:
+		//3. Zerrenda aktore bakarra izatea gehiketa baino lehen:
 		
 		assertEquals(zerrenda2.luzera(), 1); //aktore bakarra dauka.
 		zerrenda2.gehituAktorea(aktore2); 	 //aktore3 jadanik dauka.
@@ -313,7 +316,6 @@ public class ListaAktoreakTest {
 	/******************************************/
 	
 	
-
 
 	
 	
@@ -347,9 +349,9 @@ public class ListaAktoreakTest {
 		assertTrue(aktoreHau.getIzena().equals(aktore2.getIzena()));
 		
 		
-		//5. Aktorea erdian egotea:
+		//5. Aktorea bakarra egotea:
 		
-		aktoreHau = zerrenda2.aktoreaBilatu(aktore3); //ktore3 dauka bere baitan.
+		aktoreHau = zerrenda2.aktoreaBilatu(aktore3); //aktore3 dauka bere baitan.
 		assertTrue(aktoreHau.getIzena().equals(aktore3.getIzena()));
 		
 	}
