@@ -21,7 +21,20 @@ public class PelikulaGuztiak {
 		return PelikulaGuztiak.nirePelikulak;
 	}
 	
-	public void gehituPelikula(Pelikula pFilma){//******BERRIKUSI*******************
+	
+	
+	/******************************************************************/
+	public Pelikula pelikulaBilatu(String pPelikulaIzena){//METODO BERRIA, JUNIT BEHAR DU
+		
+		Pelikula peliHau = new Pelikula("pPelikulaIzena");
+		
+		return this.zerrenda.pelikulaBilatu(peliHau);
+	}
+	/**************************************************************************/
+	
+	
+	
+ 	public void gehituPelikula(Pelikula pFilma){
 		
 		//Aurre-Baldintza:	----------------------------------------------------------
 		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.

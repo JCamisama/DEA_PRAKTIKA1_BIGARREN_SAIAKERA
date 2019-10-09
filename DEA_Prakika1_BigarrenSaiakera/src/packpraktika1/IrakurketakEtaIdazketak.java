@@ -3,13 +3,14 @@ package packpraktika1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IrakurketakEtaIdazketak {
 	
 	private Scanner eskanerHau;
 	
-	
+/**************************TEKLATUTIK IRAKURTZEKO******************************/
 	public  String irakurriString(String pMezua){ //Teklatutik irakurtzeko metodoa
 		
 		System.out.print(pMezua+": ");
@@ -18,6 +19,32 @@ public class IrakurketakEtaIdazketak {
 		
 		return erantzuna;
 	}
+	
+	public int irakurriOsoaSalbuespen(String pMezua) {
+		System.out.println(pMezua+": ");
+		int zenbakia;
+		zenbakia=eskanerHau.nextInt();
+		return zenbakia;
+	}
+	
+	public int irakurriOsoa(String pMezua) {
+		int erantzuna=0;
+		boolean kontrolpean=false;
+		do{
+			try{
+				erantzuna=this.irakurriOsoaSalbuespen(pMezua);
+				kontrolpean=true;
+			}
+			catch (InputMismatchException e){
+				System.out.println("Sartu duzun balioa ez da zenbaki oso bat, saiatu berriz. ");
+				eskanerHau=new Scanner(System.in);
+			}
+		}while (!kontrolpean);
+		return erantzuna;
+	}	
+/*********************************************************************************/	
+	
+	
 	
 	public void fitxategiaIreki(){
 		
@@ -129,20 +156,85 @@ public class IrakurketakEtaIdazketak {
 	}
 
 
-    /* System.out.print("1.) Aktore baten bilaketa. \n");
-     System.out.print("2.) Aktore berri baten txertaketa.\n");
-     System.out.print("3.) Aktore baten pelikulak bueltatu.\n");
-     System.out.print("4.) Pelikula bateko aktoreak bueltatu.\n");
-     System.out.print("5.) Pelikula baten dirua gehitu, emandako kantiate batean.\n");
-     System.out.print("6.) Aktore baten ezabaketa.\n");
-
-	*/
-	/****************************MENUAREN METODOAK(Frogak egiteko bakarrik)****************************/
+	
+	
+	/****************************MENUAREN METODOAK****************************/
+	public void aktoreBatenBilaketaMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
+		
+		if( aktoreHau != null){
+			
+			System.out.println("Aktorea aurkitu da.");	
+		}
+		
+		else{
+			
+			System.out.println("Aktorea ez da aurkitu.");
+		}
+	}
+	
+	public void aktoreBerriBatTxertatuMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		//Borratu nahi den aktorea bilatzen
+		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		Aktorea aktoreHau  = new Aktorea(aktoreIzena);
+		
+		//Aktoreen zerrenda nagusiaren aktore kopurua gehitu baino lehen
+		System.out.println("Aktore kopurua gehitu baino lehen: "+AktoreGuztiak.getNireAktoreak().luzera());
+		//Aktoreen zerrenda nagusian sartzen
+		AktoreGuztiak.getNireAktoreak().gehituAktorea(aktoreHau);
+		//Aktoreen zerrenda nagusiaren aktore kopurua gehitu eta gero
+		System.out.println("Aktore kopurua gehitu eta gero: "+AktoreGuztiak.getNireAktoreak().luzera());
+		
+	}
+	
+	public void aktoreBatenPelikulakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		//Aktorea bilatzen
+		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
+		
+		//Aktorearen pelikulen zerrenda hartzen
+		ListaPelikulak peliZerre = aktoreHau.aktorearenPelikulakBueltatu();
+		//Pelikulak zeintzuk diren jakiteko, pantailaratuko dira
+		peliZerre.inprimatuGuztiak();
+		
+		
+	}
+	public void pelikuaBatekoAktoreakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		//Aldatu nahi den pelikula bilatzen
+		String pelikulaIzena = pIdaz.irakurriString("\nSartu pelikularen izena(Zombie Beer Run adibidez):  ");
+		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
+		
+		//Aktoreen zerrenda hartzen
+		ListaAktoreak aktoreZerre = peliHau.pelikularenAktoreakBueltatu();
+		//Aktoreak zeintzuk diren jakiteko, pantailaratuko dira
+		aktoreZerre.inprimatuAktoreak();
+		
+	}
+	public void pelikulaBatenDiruaGehituMenu(IrakurketakEtaIdazketak pIdaz){
+		
+		//Aldatu nahi den pelikula bilatzen
+		String pelikulaIzena = pIdaz.irakurriString("\nSartu pelikularen izena(Zombie Beer Run adibidez):  ");
+		int	   kantitatea	 = pIdaz.irakurriOsoa("\nSartu zenbat diru gehitu nahi diozu (kantitatea negatiboa bada, "
+				+ "galera izango da:  ");
+		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
+		
+		//Pelikulari diru kantitatea gehitzen
+		peliHau.gehituDirua(kantitatea);
+		peliHau.diruSarreraTotalakInprimatu();
+		
+		
+		
+	}
 	
 	public  void AktoreBatenEzabaketaMenu(IrakurketakEtaIdazketak pIdaz){
 		
 		//Borratu nahi den aktorea bilatzen
-		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez:  ");
+		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
 		//Jardun duen pelikuletatik kentzen
@@ -152,9 +244,9 @@ public class IrakurketakEtaIdazketak {
 		AktoreGuztiak.getNireAktoreak().ezabatuAktoreenErregistrotik(aktoreHau.getIzena());
 		
 	}
-	public static void AktoreenZerrendaIdatziMenu(){
+	public void AktoreenZerrendaIdatziMenu(IrakurketakEtaIdazketak pIdaz){
 		
-		IrakurketakEtaIdazketak.AktoreenZerrendaIdatzi();
+		pIdaz.AktoreenZerrendaIdatzi();
 		System.out.println("\nAktoreen zerrenda proiektu honetako Fitxategiak karpetan gorde da.");
 	}
 	public static void AktoreenZerrendaOrdenatuaMenu(){
@@ -168,11 +260,11 @@ public class IrakurketakEtaIdazketak {
 		System.out.println("\nPrograma amaitu da.");
 	}
 	
-	
+	/***************************************************************************/
 	
 	public static void main(String[] args){
 		
-		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak();
+		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak(); //Klase honetako metodoei deia egiteko: claseHau
 		
 		/*
 		Stopwatch kronometroa = new Stopwatch();
@@ -226,27 +318,32 @@ public class IrakurketakEtaIdazketak {
 
 		        case 2: 
 		       
+		        	cHau.aktoreBerriBatTxertatuMenu(cHau);
 		            break;
 
 		        case 3:
 		          
+		        	cHau.aktoreBatenPelikulakBueltatuMenu(cHau);
 		            break;
 
 		        case 4: 
 		        
+		        	cHau.pelikuaBatekoAktoreakBueltatuMenu(cHau);
 		            break;
 
 		        case 5:
-		         
+		        	
+		        	cHau.pelikulaBatenDiruaGehituMenu(cHau);
 		            break;
 
 		        case 6: 
 		            
+		        	cHau.AktoreBatenEzabaketaMenu(cHau);
 		            break;
 		            
 		        case 7: 
 		            
-		        	IrakurketakEtaIdazketak.AktoreenZerrendaIdatziMenu();
+		        	cHau.AktoreenZerrendaIdatziMenu(cHau);
 		            break;
 		            
 		        case 8: 

@@ -75,4 +75,8 @@ public class Pelikula{
 		this.jardunDutenak.ezabatuAktorea(aktoreHau);
 	}
 
+	public void diruSarreraTotalakInprimatu(){//METODO BERRIA, JUNIT BEHAR DU
+		
+		System.out.println("\nDiru sarrera totalak: "+ this.diruBilketa+" €\n");
+	}
 }
