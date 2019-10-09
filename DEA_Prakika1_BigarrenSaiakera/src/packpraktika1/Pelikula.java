@@ -69,10 +69,9 @@ public class Pelikula{
 		return this.izena.equals(pFilma);
 	}
 	
-	public void AktoreaPelikulatikKendu(String pAktoreIzena){ //METODO BERRIA, JUNIT BEHAR DU
+	public void AktoreaPelikulatikKendu(Aktorea pAktoreIzena){ //METODO BERRIA, JUNIT BEHAR DU
 		
-		Aktorea aktoreHau = new Aktorea(pAktoreIzena);
-		this.jardunDutenak.ezabatuAktorea(aktoreHau);
+		this.jardunDutenak.ezabatuAktorea(pAktoreIzena);
 	}
 
 	public void diruSarreraTotalakInprimatu(){//METODO BERRIA, JUNIT BEHAR DU

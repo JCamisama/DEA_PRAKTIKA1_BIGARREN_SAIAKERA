@@ -288,9 +288,12 @@ public class IrakurketakEtaIdazketak {
 	}
 	public static void AktoreenZerrendaOrdenatuaMenu(){
 		
+		Stopwatch kronometroa = new Stopwatch();
+		
 		ListaAktoreak zerreOrdenatu = AktoreGuztiak.getNireAktoreak().zerrendaOrdenatuaBueltatu();
 		System.out.println("Aktoreen zerrenda ordenatua inprimatuko da: \n\n");
 		zerreOrdenatu.inprimatuAktoreak();
+		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	public static void amaieraMenu(){
 		
