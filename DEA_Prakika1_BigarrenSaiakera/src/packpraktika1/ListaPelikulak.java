@@ -59,7 +59,7 @@ public class ListaPelikulak {
 	}
 	
 
-	public Pelikula pelikulaBilatu(Pelikula pFilma) {
+	public Pelikula pelikulaBilatu(String pFilma) {
 		
 		//Aurre-Baldintza:	----------------------------------------------------------
 		//Post-Baldinta: 	Pelikula bueltatuko da zerrendan badago, bestela null.
@@ -124,7 +124,10 @@ public class ListaPelikulak {
 				
 	}
 	
-	
+	public int luzera(){
+		
+		return this.zerrenda.size();
+	}
 	
 	public void erreseteatu() {
 		

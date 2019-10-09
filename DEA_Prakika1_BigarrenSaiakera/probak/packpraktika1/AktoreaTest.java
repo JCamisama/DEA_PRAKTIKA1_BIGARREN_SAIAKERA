@@ -116,7 +116,16 @@ public class AktoreaTest {
 	@Test
 	public void testAktorearenPelikulakBueltatu() {
 		
+		aktore1.gehituPelikula(peli1);
+		aktore1.gehituPelikula(peli2);
+		aktore1.gehituPelikula(peli3);
+		
+		
 		assertNotNull(aktore1.aktorearenPelikulakBueltatu());
+		
+		System.out.println(aktore1.aktorearenPelikulakBueltatu().luzera());
+		aktore1.aktorearenPelikulakBueltatu().inprimatuGuztiak();
+		
 	}
 
 }

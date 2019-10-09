@@ -26,9 +26,8 @@ public class PelikulaGuztiak {
 	/******************************************************************/
 	public Pelikula pelikulaBilatu(String pPelikulaIzena){//METODO BERRIA, JUNIT BEHAR DU
 		
-		Pelikula peliHau = new Pelikula("pPelikulaIzena");
 		
-		return this.zerrenda.pelikulaBilatu(peliHau);
+		return this.zerrenda.pelikulaBilatu(pPelikulaIzena);
 	}
 	/**************************************************************************/
 	
@@ -61,6 +60,11 @@ public class PelikulaGuztiak {
 	public void pelikulaKargatu(Pelikula pPelikula){//Pelikula zerrendan sartzeko errepikapena konprobatu gabe.
 		
 		this.zerrenda.pelikulaKargatu(pPelikula);
+	}
+	
+	public int luzera(){
+		
+		return this.zerrenda.luzera();
 	}
 	
 }

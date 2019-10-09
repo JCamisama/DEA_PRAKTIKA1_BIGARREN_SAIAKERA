@@ -57,7 +57,7 @@ public class ListaPelikulakTest {
 		
 		//1. Pelikuleen zerrenda hutsik egotea, Pelikula gehitu:		
 		zerrendaHutsa.gehituPelikula(filma1);		
-		listaPelikulak.inprimatuGuztiak();
+		zerrendaHutsa.inprimatuGuztiak();
 		
 		//2. Pelikula jadanik listan egotea:
 		listaPelikulak.gehituPelikula(filma1);		
@@ -70,7 +70,7 @@ public class ListaPelikulakTest {
 		Pelikula filma6 = new Pelikula ("Universal Ninjas");				
 		besteListaBat.gehituPelikula(filma6);
 		
-		listaPelikulak.inprimatuGuztiak();
+		besteListaBat.inprimatuGuztiak();
 		
 	}
 
@@ -115,7 +115,7 @@ public class ListaPelikulakTest {
 		listaPelikulak.inprimatuGuztiak();
 		
 	}
-
+/*
 	@Test
 	public void testPelikulaBilatu() {
 		
@@ -150,7 +150,7 @@ public class ListaPelikulakTest {
 			assertTrue(pelikulaHau.getIzena().equals(filma2.getIzena()));		
 		
 	}
-	
+	*/
 	@Test
 	public void erreseteatu() {
 		

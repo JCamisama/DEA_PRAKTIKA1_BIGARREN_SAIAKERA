@@ -13,21 +13,26 @@ public class IrakurketakEtaIdazketak {
 /**************************TEKLATUTIK IRAKURTZEKO******************************/
 	public  String irakurriString(String pMezua){ //Teklatutik irakurtzeko metodoa
 		
-		System.out.print(pMezua+": ");
-		String erantzuna	= this.eskanerHau.next();
+		this.eskanerHau = new Scanner(System.in);
+		System.out.print(pMezua);
+		String erantzuna	= this.eskanerHau.nextLine();
 		
 		
 		return erantzuna;
 	}
 	
 	public int irakurriOsoaSalbuespen(String pMezua) {
-		System.out.println(pMezua+": ");
+		
+		this.eskanerHau = new Scanner(System.in);
+		System.out.println(pMezua);
 		int zenbakia;
 		zenbakia=eskanerHau.nextInt();
 		return zenbakia;
 	}
 	
 	public int irakurriOsoa(String pMezua) {
+		
+		this.eskanerHau = new Scanner(System.in);
 		int erantzuna=0;
 		boolean kontrolpean=false;
 		do{
@@ -105,7 +110,14 @@ public class IrakurketakEtaIdazketak {
 		
 		while( AktorPosizio < pAktoreakIzenak.length ){
 			
-			Aktorea	aktoreHau	= new Aktorea(pAktoreakIzenak[AktorPosizio]);
+			
+			
+			Aktorea	aktoreHau	= aktorMaster.aktoreaBilatu(pAktoreakIzenak[AktorPosizio]);
+			
+			if(aktoreHau == null){
+				
+				aktoreHau = new Aktorea(pAktoreakIzenak[AktorPosizio]);
+			}
 			
 			aktoreHau.gehituPelikula(pelikulaHau);
 			aktorMaster.gehituAktorea(aktoreHau);
@@ -114,7 +126,7 @@ public class IrakurketakEtaIdazketak {
 			AktorPosizio++;
 		}
 		
-		//peliMaster.gehituPelikula(pelikulaHau);//ez errepikatzearena EZ DAGO INPLEMENTATUTA ORAINDIK
+		
 		peliMaster.pelikulaKargatu(pelikulaHau);
 	}
 	
@@ -181,26 +193,34 @@ public class IrakurketakEtaIdazketak {
 		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
 		Aktorea aktoreHau  = new Aktorea(aktoreIzena);
 		
+		
 		//Aktoreen zerrenda nagusiaren aktore kopurua gehitu baino lehen
 		System.out.println("Aktore kopurua gehitu baino lehen: "+AktoreGuztiak.getNireAktoreak().luzera());
 		//Aktoreen zerrenda nagusian sartzen
 		AktoreGuztiak.getNireAktoreak().gehituAktorea(aktoreHau);
 		//Aktoreen zerrenda nagusiaren aktore kopurua gehitu eta gero
 		System.out.println("Aktore kopurua gehitu eta gero: "+AktoreGuztiak.getNireAktoreak().luzera());
-		
 	}
+		
 	
 	public void aktoreBatenPelikulakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
 		
 		//Aktorea bilatzen
-		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		String aktoreIzena = pIdaz.irakurriString("\nSartu  aktorearen izena('Bale, Christian' adibidez):  ");
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
-		//Aktorearen pelikulen zerrenda hartzen
-		ListaPelikulak peliZerre = aktoreHau.aktorearenPelikulakBueltatu();
-		//Pelikulak zeintzuk diren jakiteko, pantailaratuko dira
-		peliZerre.inprimatuGuztiak();
-		
+		if(aktoreHau != null){
+			//Aktorearen pelikulen zerrenda hartzen
+			ListaPelikulak peliZerre = aktoreHau.aktorearenPelikulakBueltatu();
+			//Pelikulak zeintzuk diren jakiteko, pantailaratuko dira
+			System.out.println(peliZerre.luzera());
+			System.out.println(PelikulaGuztiak.getNirePelikulak().luzera());
+			peliZerre.inprimatuGuztiak();
+		}
+		else{
+			
+			System.out.println("\nAktorea ez da aurkitu.\n\n");
+		}
 		
 	}
 	public void pelikuaBatekoAktoreakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
@@ -209,11 +229,17 @@ public class IrakurketakEtaIdazketak {
 		String pelikulaIzena = pIdaz.irakurriString("\nSartu pelikularen izena(Zombie Beer Run adibidez):  ");
 		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
 		
-		//Aktoreen zerrenda hartzen
-		ListaAktoreak aktoreZerre = peliHau.pelikularenAktoreakBueltatu();
-		//Aktoreak zeintzuk diren jakiteko, pantailaratuko dira
-		aktoreZerre.inprimatuAktoreak();
-		
+		if(peliHau != null){
+			
+			//Aktoreen zerrenda hartzen
+			ListaAktoreak aktoreZerre = peliHau.pelikularenAktoreakBueltatu();
+			//Aktoreak zeintzuk diren jakiteko, pantailaratuko dira
+			aktoreZerre.inprimatuAktoreak();
+		}
+		else{
+			
+			System.out.println("\nPelikula ez da aurkitu.\n\n");
+		}
 	}
 	public void pelikulaBatenDiruaGehituMenu(IrakurketakEtaIdazketak pIdaz){
 		
@@ -223,10 +249,16 @@ public class IrakurketakEtaIdazketak {
 				+ "galera izango da:  ");
 		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
 		
-		//Pelikulari diru kantitatea gehitzen
-		peliHau.gehituDirua(kantitatea);
-		peliHau.diruSarreraTotalakInprimatu();
-		
+		if(peliHau != null){
+			
+			//Pelikulari diru kantitatea gehitzen
+			peliHau.gehituDirua(kantitatea);
+			peliHau.diruSarreraTotalakInprimatu();
+		}
+		else{
+			
+			System.out.println("\nPelikula ez da aurkitu.\n\n");
+		}
 		
 		
 	}
@@ -237,12 +269,17 @@ public class IrakurketakEtaIdazketak {
 		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
-		//Jardun duen pelikuletatik kentzen
-		aktoreHau.ezabatuBerePelikuletatik();
-		
-		//Aktore guztien zerrendatik kentzen
-		AktoreGuztiak.getNireAktoreak().ezabatuAktoreenErregistrotik(aktoreHau.getIzena());
-		
+		if(aktoreHau != null){
+			//Jardun duen pelikuletatik kentzen
+			aktoreHau.ezabatuBerePelikuletatik();
+			
+			//Aktore guztien zerrendatik kentzen
+			AktoreGuztiak.getNireAktoreak().ezabatuAktoreenErregistrotik(aktoreHau.getIzena());
+		}
+		else{
+			
+			System.out.println("\nAktorea ez da aurkitu.\n\n");
+		}
 	}
 	public void AktoreenZerrendaIdatziMenu(IrakurketakEtaIdazketak pIdaz){
 		
@@ -279,7 +316,7 @@ public class IrakurketakEtaIdazketak {
 		//cHau.AktoreenZerrendaIdatzi();
 		//PelikulaGuztiak.getNirePelikulak().inprimatuGuztiak();*/
 		
-		
+		 
 		 Scanner sarrera	= new Scanner(System.in);
 		 boolean jarraitu	= true;
 
@@ -293,7 +330,7 @@ public class IrakurketakEtaIdazketak {
 		 
 		 
 		 while(jarraitu){
-		        System.out.println("\t\t\t*******MENU NAGUSIA*******\n\n");
+		        System.out.println("\n\n\t\t\t*******MENU NAGUSIA*******\n\n");
 		        System.out.print("1.) Aktore baten bilaketa. \n");
 		        System.out.print("2.) Aktore berri baten txertaketa.\n");
 		        System.out.print("3.) Aktore baten pelikulak bueltatu.\n");
@@ -304,15 +341,14 @@ public class IrakurketakEtaIdazketak {
 		        System.out.print("8.) Aktoreen zerrenda ordenatua lortu (abizenak, izena).\n");
 		        System.out.print("9.) Amaiera.\n");
 		        
-		        System.out.print("\nSartu zure aukera: ");
 
-		        aukera = sarrera.nextInt();
+		        aukera = cHau.irakurriOsoa("\nSartu zure aukera (1-9): ");
 
 		        switch(aukera){
 
 		        case 1:
 		            
-		        	
+		        	cHau.aktoreBatenBilaketaMenu(cHau);
 		      
 		            break;
 
@@ -356,12 +392,14 @@ public class IrakurketakEtaIdazketak {
 		        	IrakurketakEtaIdazketak.amaieraMenu();
 		        	break;
 
-		        }
-
-
+		        }//Switch-aren amaiera
 		        
+		        if(aukera >=9){
+		        	
+		        	jarraitu = false;
+		        }      
 		
-	}
+		 }//While-aren amaiera
 	}
 
 }
