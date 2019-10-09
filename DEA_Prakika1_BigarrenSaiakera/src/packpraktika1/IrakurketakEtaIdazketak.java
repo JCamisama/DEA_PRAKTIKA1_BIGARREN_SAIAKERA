@@ -76,7 +76,8 @@ public class IrakurketakEtaIdazketak {
 			AktorPosizio++;
 		}
 		
-		peliMaster.gehituPelikula(pelikulaHau);//ez errepikatzearena EZ DAGO INPLEMENTATUTA ORAINDIK
+		//peliMaster.gehituPelikula(pelikulaHau);//ez errepikatzearena EZ DAGO INPLEMENTATUTA ORAINDIK
+		peliMaster.pelikulaKargatu(pelikulaHau);
 	}
 	
 	public void fitxategiaItxi(){
@@ -121,14 +122,16 @@ public class IrakurketakEtaIdazketak {
 		
 		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak();
 		
+		Stopwatch kronometroa = new Stopwatch();
 		cHau.fitxategiaIreki();
 		cHau.fitxategiaIrakurri();
 		cHau.fitxategiaItxi();
+		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 		//ListaAktoreak zerrendaOrdenatua = zHau.AktoreOrdenatuakLortu();
 		//zerrendaOrdenatua.inprimatuAktoreak();
 		//bHau.AktoreenZerrendaIdatzi();
 		
-		cHau.AktoreenZerrendaIdatzi();
+		//cHau.AktoreenZerrendaIdatzi();
 		//PelikulaGuztiak.getNirePelikulak().inprimatuGuztiak();
 	}
 
