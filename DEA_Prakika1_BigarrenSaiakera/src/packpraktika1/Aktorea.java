@@ -82,6 +82,7 @@ public class Aktorea {
 	public void ezabatuBerePelikuletatik(){//METODO BERRIA, JUNIT BEHAR DU
 		
 		this.starringPelikula.ezabatuPelikulaHauetatik(this);
+		this.starringPelikula.garbitu();
 	}
 		
 }

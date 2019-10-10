@@ -105,7 +105,11 @@ public class ListaPelikulak {
 	}
 	
 	
-	public void pelikulaKargatu(Pelikula pPelikula){
+	public void pelikulaKargatu(Pelikula pPelikula){ //Gehiketa egiten du, ea zerrendan dagoen konrpobatu gabe
+		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
+		//Kostua:			O(1);
 		
 		this.zerrenda.add(pPelikula);
 	}
@@ -124,15 +128,20 @@ public class ListaPelikulak {
 				
 	}
 	
-	public int luzera(){
+	public int luzera(){ //Frogak egiteko bakarrik
 		
 		return this.zerrenda.size();
 	}
 	
-	public void erreseteatu() {
+	public void erreseteatu() { //Frogak egiteko bakarrik
 		
 		zerrenda.clear();
 		
+	}
+	
+	public void garbitu(){ //Frogak egiteko bakarrik
+		
+		this.zerrenda.clear();
 	}
 	
 

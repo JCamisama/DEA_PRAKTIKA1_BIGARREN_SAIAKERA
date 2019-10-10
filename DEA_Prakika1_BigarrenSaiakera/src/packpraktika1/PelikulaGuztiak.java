@@ -23,13 +23,13 @@ public class PelikulaGuztiak {
 	
 	
 	
-	/******************************************************************/
+	
 	public Pelikula pelikulaBilatu(String pPelikulaIzena){//METODO BERRIA, JUNIT BEHAR DU
 		
 		
 		return this.zerrenda.pelikulaBilatu(pPelikulaIzena);
 	}
-	/**************************************************************************/
+
 	
 	
 	
@@ -62,12 +62,12 @@ public class PelikulaGuztiak {
 		this.zerrenda.pelikulaKargatu(pPelikula);
 	}
 	
-	public int luzera(){
+	public int luzera(){ //Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
 		
 		return this.zerrenda.luzera();
 	}
 	
-	public void erreseteatu(){
+	public void erreseteatu(){ //Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
 		
 		PelikulaGuztiak.nirePelikulak = null;
 	}
