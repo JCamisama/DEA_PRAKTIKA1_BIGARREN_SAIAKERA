@@ -24,7 +24,7 @@ public class PelikulaGuztiak {
 	
 	
 	
-	public Pelikula pelikulaBilatu(String pPelikulaIzena){//METODO BERRIA, JUNIT BEHAR DU
+	public Pelikula pelikulaBilatu(String pPelikulaIzena){
 		
 		
 		return this.zerrenda.pelikulaBilatu(pPelikulaIzena);

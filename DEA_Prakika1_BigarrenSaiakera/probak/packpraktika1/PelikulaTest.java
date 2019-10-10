@@ -109,11 +109,48 @@ public class PelikulaTest {
 		//Bilaketan erabiliko den objektua
 		Pelikula pelikulaBilatzen = new Pelikula("The Dark Knight");
 				
-		assertTrue(peli1.bilatzekoPelikula(pelikulaBilatzen));
+		assertTrue(peli2.bilatzekoPelikula(pelikulaBilatzen.getIzena()));
 				
 		//Pelikula ez bada bilatzen ari dena, false
-		assertFalse(peli1.bilatzekoPelikula(peli2));
+		assertFalse(peli1.bilatzekoPelikula(peli2.getIzena()));
 		
+	}
+	
+	@Test
+	public void AktoreaPelikulatikKendu(){ 		
+
+		Aktorea aktore4				= new Aktorea("Bale, Christian");
+		Aktorea aktore5				= new Aktorea("DiCaprio, Leonardo");
+		Aktorea aktore6				= new Aktorea("Ledger, Heath");
+		
+		peli1.aktoreBerriaSartu(aktore4);
+		peli2.aktoreBerriaSartu(aktore4);
+		
+		peli1.aktoreBerriaSartu(aktore5);
+		
+		//1. Emandako aktorea pelikulan ez egotea:	
+		
+		peli1.AktoreaPelikulatikKendu(aktore6);	
+		
+				
+		//3. Ezabatu nahi den aktorea pelikula batean egotea:		
+			
+		peli1.AktoreaPelikulatikKendu(aktore5);			 
+		
+				 
+		//4. Ezabatu nahi den aktorea pelikula askotan egotea:
+		
+		peli1.AktoreaPelikulatikKendu(aktore4);	
+		peli2.AktoreaPelikulatikKendu(aktore4);	
+	}
+
+	@Test
+	public void diruSarreraTotalakInprimatu(){
+		
+		peli2.gehituDirua(200);
+		peli2.gehituDirua(8000);
+		
+		peli2.diruSarreraTotalakInprimatu();
 	}
 
 }

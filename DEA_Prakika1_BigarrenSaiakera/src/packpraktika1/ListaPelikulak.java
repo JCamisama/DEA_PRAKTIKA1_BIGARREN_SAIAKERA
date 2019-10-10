@@ -114,8 +114,7 @@ public class ListaPelikulak {
 		this.zerrenda.add(pPelikula);
 	}
 	
-	public void ezabatuPelikulaHauetatik(Aktorea pAktoreIzena){//METODO BERRIA, JUNIT BEHAR DU
-		
+	public void ezabatuPelikulaHauetatik(Aktorea pAktoreIzena){		
 		Iterator<Pelikula> 	itr			=	this.getIteradorea();
 		Pelikula			peliHau		=	null;
 		

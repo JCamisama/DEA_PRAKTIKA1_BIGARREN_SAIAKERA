@@ -69,12 +69,12 @@ public class Pelikula{
 		return this.izena.equals(pFilma);
 	}
 	
-	public void AktoreaPelikulatikKendu(Aktorea pAktoreIzena){ //METODO BERRIA, JUNIT BEHAR DU
+	public void AktoreaPelikulatikKendu(Aktorea pAktoreIzena){ 
 		
 		this.jardunDutenak.ezabatuAktorea(pAktoreIzena);
 	}
 
-	public void diruSarreraTotalakInprimatu(){//METODO BERRIA, JUNIT BEHAR DU
+	public void diruSarreraTotalakInprimatu(){
 		
 		System.out.println("\nDiru sarrera totalak: "+ this.diruBilketa+" €\n");
 	}

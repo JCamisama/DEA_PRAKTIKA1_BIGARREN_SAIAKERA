@@ -57,7 +57,7 @@ public class PelikulaGuztiakTest {
 		
 		//1. Pelikuleen zerrenda hutsik egotea, Pelikula gehitu:		
 			listaHutsa.gehituPelikula(filma1);		
-			listaPelikulaGuztiak.inprimatuGuztiak();
+			listaHutsa.inprimatuGuztiak();
 				
 		//2. Pelikula jadanik listan egotea:
 			listaPelikulaGuztiak.gehituPelikula(filma1);		
@@ -71,7 +71,7 @@ public class PelikulaGuztiakTest {
 			Pelikula filma6 = new Pelikula ("Universal Ninjas");				
 			besteListaBat.gehituPelikula(filma6);
 				
-			listaPelikulaGuztiak.inprimatuGuztiak();
+			besteListaBat.inprimatuGuztiak();
 		
 	}
 
@@ -80,7 +80,7 @@ public class PelikulaGuztiakTest {
 		
 		//1. Emandako lista hutsa izatea:			
 			listaHutsa.ezabatuFilma(filma1);
-			listaPelikulaGuztiak.inprimatuGuztiak();
+			listaHutsa.inprimatuGuztiak();
 				
 		//2. Ezabatu nahi den pelikula zerrendan ez egotea:			
 			Pelikula filma7 = new Pelikula ("Hollywood Dreams");		
@@ -97,7 +97,7 @@ public class PelikulaGuztiakTest {
 				
 				besteListaBat2.ezabatuFilma(filma1);
 				 
-				listaPelikulaGuztiak.inprimatuGuztiak();
+				besteListaBat2.inprimatuGuztiak();
 				 
 		//4. Ezabatu nahi den Pelikula amaieran egotea:
 				PelikulaGuztiak besteListaBat3 = null;
@@ -106,9 +106,49 @@ public class PelikulaGuztiakTest {
 				besteListaBat3.gehituPelikula(filma2);
 				besteListaBat3.gehituPelikula(filma3);
 				 
-				besteListaBat2.ezabatuFilma(filma3);
+				besteListaBat3.ezabatuFilma(filma3);
 				 
-				listaPelikulaGuztiak.inprimatuGuztiak();
+				besteListaBat3.inprimatuGuztiak();		
+		
+	}
+	
+	@Test
+	public void pelikulaBilatu() {
+		
+		 PelikulaGuztiak besteListaBat4 = null;
+		 besteListaBat4 = PelikulaGuztiak.getNirePelikulak();
+		 besteListaBat4.gehituPelikula(filma1);
+		 besteListaBat4.gehituPelikula(filma2);
+		 besteListaBat4.gehituPelikula(filma3);
+		 
+		 Pelikula filma7 = new Pelikula ("Hollywood Dreams");	
+		 
+		 Pelikula pelikulaHau =null;
+		
+		//1. Pelikula zerrendan ez egotea:
+		
+			pelikulaHau = besteListaBat4.pelikulaBilatu(filma7.getIzena()); ////filma1, filma2 eta filma3 ditu bere baitan
+			assertNull(pelikulaHau);
+				
+				
+				
+		//2. Pelikula hasieran egotea:
+				
+			pelikulaHau = besteListaBat4.pelikulaBilatu(filma1.getIzena()); //filma1, filma2 eta filma3 ditu bere baitan, orden honetan.
+			assertTrue(pelikulaHau.getIzena().equals(filma1.getIzena()));
+				
+				
+				
+		//3. Pelikula amaieran egotea:
+				
+			pelikulaHau = besteListaBat4.pelikulaBilatu(filma3.getIzena()); //filma1, filma2 eta filma3 ditu bere baitan, orden honetan.
+			assertTrue(pelikulaHau.getIzena().equals(filma3.getIzena()));
+				
+				
+		//4. Pelikula erdian egotea:
+				
+			pelikulaHau = besteListaBat4.pelikulaBilatu(filma2.getIzena()); //filma1, filma2 eta filma3 ditu bere baitan, orden honetan.
+			assertTrue(pelikulaHau.getIzena().equals(filma2.getIzena()));		
 		
 		
 	}
@@ -118,6 +158,40 @@ public class PelikulaGuztiakTest {
 		
 		listaPelikulaGuztiak.inprimatuGuztiak();
 		
+	}
+
+	@Test
+	public void pelikulaKargatu(){
+		
+		//1. Pelikuleen zerrenda hutsik egotea, Pelikula gehitu:		
+		listaHutsa.gehituPelikula(filma1);		
+		listaHutsa.inprimatuGuztiak();
+			
+		//2. Pelikula jadanik listan egotea:
+		listaPelikulaGuztiak.gehituPelikula(filma1);		
+		listaPelikulaGuztiak.inprimatuGuztiak();
+			
+		//3. Zerrenda pelikula bakarra izatea gehiketa baino lehen:
+		PelikulaGuztiak besteListaBat5 = null;
+		besteListaBat5 = PelikulaGuztiak.getNirePelikulak();
+		besteListaBat5.gehituPelikula(filma1);
+			
+		Pelikula filma6 = new Pelikula ("Universal Ninjas");				
+		besteListaBat5.gehituPelikula(filma6);
+			
+		besteListaBat5.inprimatuGuztiak();
+	}
+	
+	@Test
+	public void luzera(){ 
+		
+		this.listaPelikulaGuztiak.luzera();
+	}
+	
+	@Test
+	public void erreseteatu(){ 
+		
+		this.listaPelikulaGuztiak.erreseteatu();
 	}
 
 }
