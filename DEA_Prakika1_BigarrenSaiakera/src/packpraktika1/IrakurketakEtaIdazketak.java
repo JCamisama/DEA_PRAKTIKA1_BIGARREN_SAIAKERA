@@ -179,7 +179,7 @@ public class IrakurketakEtaIdazketak {
 	public void aktoreBatenBilaketaMenu(IrakurketakEtaIdazketak pIdaz){
 		
 		
-		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		String aktoreIzena = pIdaz.irakurriString("\nSartu bilatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
 		Stopwatch kronometroa = new Stopwatch();
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
@@ -338,22 +338,8 @@ public class IrakurketakEtaIdazketak {
 	/***************************************PROGRAMA OSOA PROBATZEKO METODO NAGUSIA****************************************/
 	public static void main(String[] args){
 		
-		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak(); //Klase honetako metodoei deia egiteko: claseHau
-		
-		/*
-		Stopwatch kronometroa = new Stopwatch();
-		cHau.fitxategiaIreki();
-		cHau.fitxategiaIrakurri();
-		cHau.fitxategiaItxi();
-		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
-		//ListaAktoreak zerrendaOrdenatua = zHau.AktoreOrdenatuakLortu();
-		//zerrendaOrdenatua.inprimatuAktoreak();
-		//bHau.AktoreenZerrendaIdatzi();
-		
-		//cHau.AktoreenZerrendaIdatzi();
-		//PelikulaGuztiak.getNirePelikulak().inprimatuGuztiak();*/
-		
-		 
+		 IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak(); //Klase honetako metodoei deia egiteko: claseHau
+	
 		 Scanner sarrera	= new Scanner(System.in);
 		 boolean jarraitu	= true;
 
@@ -439,4 +425,7 @@ public class IrakurketakEtaIdazketak {
 		 }//While-aren amaiera
 	}
 	/**********************************************************************************************************************/
+	
+	
+
 }

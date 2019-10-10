@@ -67,4 +67,8 @@ public class PelikulaGuztiak {
 		return this.zerrenda.luzera();
 	}
 	
+	public void erreseteatu(){
+		
+		PelikulaGuztiak.nirePelikulak = null;
+	}
 }
