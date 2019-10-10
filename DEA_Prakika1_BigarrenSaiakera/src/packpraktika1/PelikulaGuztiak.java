@@ -21,7 +21,19 @@ public class PelikulaGuztiak {
 		return PelikulaGuztiak.nirePelikulak;
 	}
 	
-	public void gehituPelikula(Pelikula pFilma){//******BERRIKUSI*******************
+	
+	
+	
+	public Pelikula pelikulaBilatu(String pPelikulaIzena){//METODO BERRIA, JUNIT BEHAR DU
+		
+		
+		return this.zerrenda.pelikulaBilatu(pPelikulaIzena);
+	}
+
+	
+	
+	
+ 	public void gehituPelikula(Pelikula pFilma){
 		
 		//Aurre-Baldintza:	----------------------------------------------------------
 		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
@@ -50,4 +62,13 @@ public class PelikulaGuztiak {
 		this.zerrenda.pelikulaKargatu(pPelikula);
 	}
 	
+	public int luzera(){ //Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
+		
+		return this.zerrenda.luzera();
+	}
+	
+	public void erreseteatu(){ //Frogak egiteko programatu da bakarrik, ez da memorian idatzi behar
+		
+		PelikulaGuztiak.nirePelikulak = null;
+	}
 }

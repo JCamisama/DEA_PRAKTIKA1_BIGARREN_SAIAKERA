@@ -60,13 +60,22 @@ public class Pelikula{
 		return this.izena;
 	}
 	
-	public boolean bilatzekoPelikula(Pelikula pFilma) {
+	public boolean bilatzekoPelikula(String pFilma) {
 		
 		//Aurre-Baldintza:	Letra larriak eta xeheak ezberdinduko dira.
 		//Post-Baldintza:	pFilma izena pelikula honen izenaren berdina bada True, bestela False.
 		//Kostua:			O(1);
 		
-		return this.izena.equals(pFilma.getIzena());
+		return this.izena.equals(pFilma);
+	}
+	
+	public void AktoreaPelikulatikKendu(Aktorea pAktoreIzena){ //METODO BERRIA, JUNIT BEHAR DU
+		
+		this.jardunDutenak.ezabatuAktorea(pAktoreIzena);
 	}
 
+	public void diruSarreraTotalakInprimatu(){//METODO BERRIA, JUNIT BEHAR DU
+		
+		System.out.println("\nDiru sarrera totalak: "+ this.diruBilketa+" €\n");
+	}
 }

@@ -101,7 +101,7 @@ public class AktoreGuztiak {
 		//Zerrenda betetzen
 		while( itr.hasNext() ){
 			
-			zerreHau.gehituAktorea(itr.next());
+			zerreHau.aktoreaKargatu(itr.next());
 		}
 		
 		//Zerrenda ordenatzen

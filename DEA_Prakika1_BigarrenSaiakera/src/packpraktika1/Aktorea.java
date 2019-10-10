@@ -25,7 +25,7 @@ public class Aktorea {
 	
 	public void inprimatuAktorea(){ //FROGAK EGITEKO METODOA, EZ DA MEMORIAN SARTUKO
 		
-		System.out.println("\nIzen Osoa: " + this.izena + "\n\n");
+		System.out.println("\n" +this.izena + "\n");
 		
 	}
 	
@@ -77,6 +77,12 @@ public class Aktorea {
 		//Kostua:			O(1);
 		
 		return this.starringPelikula;
+	}
+	
+	public void ezabatuBerePelikuletatik(){//METODO BERRIA, JUNIT BEHAR DU
+		
+		this.starringPelikula.ezabatuPelikulaHauetatik(this);
+		this.starringPelikula.garbitu();
 	}
 		
 }

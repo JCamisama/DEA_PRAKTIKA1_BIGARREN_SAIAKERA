@@ -59,7 +59,7 @@ public class ListaPelikulak {
 	}
 	
 
-	public Pelikula pelikulaBilatu(Pelikula pFilma) {
+	public Pelikula pelikulaBilatu(String pFilma) {
 		
 		//Aurre-Baldintza:	----------------------------------------------------------
 		//Post-Baldinta: 	Pelikula bueltatuko da zerrendan badago, bestela null.
@@ -105,14 +105,43 @@ public class ListaPelikulak {
 	}
 	
 	
-	public void pelikulaKargatu(Pelikula pPelikula){
+	public void pelikulaKargatu(Pelikula pPelikula){ //Gehiketa egiten du, ea zerrendan dagoen konrpobatu gabe
+		
+		//Aurre-Baldintza:	----------------------------------------------------------
+		//Post-Baldinta: 	Pelikula ez bada null eta ez badago zerrendan, gehituko da.
+		//Kostua:			O(1);
 		
 		this.zerrenda.add(pPelikula);
 	}
-	public void erreseteatu() {
+	
+	public void ezabatuPelikulaHauetatik(Aktorea pAktoreIzena){//METODO BERRIA, JUNIT BEHAR DU
+		
+		Iterator<Pelikula> 	itr			=	this.getIteradorea();
+		Pelikula			peliHau		=	null;
+		
+
+		while(itr.hasNext()){
+			
+			peliHau	=	itr.next();
+			peliHau.AktoreaPelikulatikKendu(pAktoreIzena);
+		}
+				
+	}
+	
+	public int luzera(){ //Frogak egiteko bakarrik
+		
+		return this.zerrenda.size();
+	}
+	
+	public void erreseteatu() { //Frogak egiteko bakarrik
 		
 		zerrenda.clear();
 		
+	}
+	
+	public void garbitu(){ //Frogak egiteko bakarrik
+		
+		this.zerrenda.clear();
 	}
 	
 

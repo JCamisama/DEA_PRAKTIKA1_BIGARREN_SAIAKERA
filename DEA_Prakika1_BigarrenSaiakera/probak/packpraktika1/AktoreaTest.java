@@ -116,7 +116,56 @@ public class AktoreaTest {
 	@Test
 	public void testAktorearenPelikulakBueltatu() {
 		
+		aktore1.gehituPelikula(peli1);
+		aktore1.gehituPelikula(peli2);
+		aktore1.gehituPelikula(peli3);
+		
+		
 		assertNotNull(aktore1.aktorearenPelikulakBueltatu());
+		
+		System.out.println(aktore1.aktorearenPelikulakBueltatu().luzera());
+		aktore1.aktorearenPelikulakBueltatu().inprimatuGuztiak();
+		
+	}
+	
+	@Test
+	public void testEzabatuBerePelikuletatik(){
+		
+		Pelikula peliBerri = new Pelikula("Sharknado");
+		
+		
+		//Aktore 3 filmetan egongo da
+		aktore1.gehituPelikula(peli1);
+		aktore1.gehituPelikula(peli2);
+		aktore1.gehituPelikula(peli3);
+		//Beste aktore batek pelikula berrian egongo da
+		aktore2.gehituPelikula(peliBerri);
+		
+		peli1.aktoreBerriaSartu(aktore1);
+		peli1.aktoreBerriaSartu(aktore2);
+		peli3.aktoreBerriaSartu(aktore3);
+		peliBerri.aktoreBerriaSartu(aktore2);
+		
+		//Aktore1 pelikula guztietatik kentzen
+		System.out.println("PELI1-REN AKTOREAK: ");
+		peli1.pelikularenAktoreakBueltatu().inprimatuAktoreak();
+		
+		System.out.println("AKTORE1-EN PELIKULAK: ");
+		aktore1.aktorearenPelikulakBueltatu().inprimatuGuztiak();
+		aktore1.ezabatuBerePelikuletatik();
+		System.out.println("PELI1-REN AKTOREAK AKTORE1 EZABATU ETA GERO: ");
+		peli1.pelikularenAktoreakBueltatu().inprimatuAktoreak();
+		
+		System.out.println("AKTORE1-EN PELIKULAK EZABATU ETA GERO: ");
+		aktore1.aktorearenPelikulakBueltatu().inprimatuGuztiak();
+		
+		System.out.println("\nBESTE PELIKULAREN AKTORE ZERRENDA AKTORE1 EZABATU ETA GERO: ");
+		//Aktore1 peliBerri berdin mantenduko da
+		peliBerri.pelikularenAktoreakBueltatu().inprimatuAktoreak();;
+	
+		
+
+		
 	}
 
 }

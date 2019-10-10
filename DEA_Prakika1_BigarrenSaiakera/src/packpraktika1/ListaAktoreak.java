@@ -249,6 +249,11 @@ public class ListaAktoreak {
 		return ordenatua;
 		
 	}
+	
+	public void aktoreaKargatu(Aktorea pAktoreHau){//Aktoreak hashmapetatik hartzeko, badagoen konprobatu gabe
+		
+		this.zerrenda.add(pAktoreHau);
+	}
 
 }
 
