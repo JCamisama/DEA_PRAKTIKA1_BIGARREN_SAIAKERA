@@ -62,35 +62,84 @@ public class IrakurketakEtaIdazketakTest {
 	
 	
 	
-	//Continua, Jonport!
+	/*************AKTORE BATEN PELIKULAK BUELTATU******************************/	
 	@Test
 	public void testAktoreBatenPelikulakBueltatuMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.aktoreBatenPelikulakBueltatuMenu(nagusia);
+		
+		//Aktore baten pelikulak bueltatzearen tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest
+		
 	}
-
+	/*********************************************************************************/
+	
+	
+	
+	/*************PELIKULA BATEN AKTOREAK BUELTATU******************************/
 	@Test
 	public void testPelikuaBatekoAktoreakBueltatuMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.pelikuaBatekoAktoreakBueltatuMenu(nagusia);
+		
+		//Pelikula baten aktoreak bueltatzearen tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest
 	}
-
+	/*********************************************************************************/
+	
+	
+	
+	/*************PELIKULA BATEN DIRUA GEHITU******************************/
 	@Test
 	public void testPelikulaBatenDiruaGehituMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.pelikulaBatenDiruaGehituMenu(nagusia);
+		
+		//Pelikula baten dirua gehitzearen tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest	
+		
 	}
-
+	/*********************************************************************************/
+	
+	
+	
+	
+	/*************AKTORE BAT EZABATU******************************/
 	@Test
 	public void testAktoreBatenEzabaketaMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.AktoreBatenEzabaketaMenu(nagusia);
+		
+		//Aktore baten ezabaketaren tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest
+		
 	}
-
+	/*********************************************************************************/
+	
+	
+	
+	
+	/*************AKTOREEN ZERRENDA IDATZI******************************/
 	@Test
 	public void testAktoreenZerrendaIdatziMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.AktoreenZerrendaIdatziMenu(nagusia);
+		
+		//Aktoreen zerrenda idaztearen tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest
+		
+		
 	}
-
+	/*********************************************************************************/
+	
+	
+	
+	
+	/*************AKTORE ZERRENDA ORDENATU******************************/
 	@Test
 	public void testAktoreenZerrendaOrdenatuaMenu() {
-		fail("Not yet implemented");
+		
+		nagusia.AktoreenZerrendaOrdenatuaMenu();
+		
+		//Aktoreen zerrenda ordenatzerakoan tratamendua probatzeko, ikusi ListaAktoreakTest eta AktoreGuztiakTest
+		
+		
 	}
+	/*********************************************************************************/
 
 }
