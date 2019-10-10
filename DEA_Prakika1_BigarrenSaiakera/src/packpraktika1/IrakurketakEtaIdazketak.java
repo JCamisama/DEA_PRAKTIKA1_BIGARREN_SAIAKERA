@@ -50,7 +50,7 @@ public class IrakurketakEtaIdazketak {
 /*********************************************************************************/	
 	
 	
-	
+	/************************************FITXATEGIAREN IRAKURKETA******************************************************/
 	public void fitxategiaIreki(){
 		
 		//String filename = "Fitxategiak/FilmakAktoreak.txt";
@@ -139,6 +139,11 @@ public class IrakurketakEtaIdazketak {
 		this.eskanerHau.close();
 	}
 	
+	/**********************************************************************************************************************/
+	
+	
+	
+	/*****************************************AKTOREEN ZERRENDA IDAZTEKO*********************************/
 	public static void AktoreenZerrendaIdatzi(){
 		
 		//Aurre-Baldintza:	Fitxategiaren kokapena/helburua  metodoaren barruan dagoena da.
@@ -166,14 +171,16 @@ public class IrakurketakEtaIdazketak {
 		}
 		
 	}
-
+	/****************************************************************************************************/
 
 	
 	
 	/****************************MENUAREN METODOAK****************************/
 	public void aktoreBatenBilaketaMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
 		if( aktoreHau != null){
@@ -185,12 +192,15 @@ public class IrakurketakEtaIdazketak {
 			
 			System.out.println("Aktorea ez da aurkitu.");
 		}
+		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	
 	public void aktoreBerriBatTxertatuMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		//Borratu nahi den aktorea bilatzen
-		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		String aktoreIzena = pIdaz.irakurriString("\nSartu txertatu nahi duzun aktorearen izena('Dragneel, Jonport' adibidez):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Aktorea aktoreHau  = new Aktorea(aktoreIzena);
 		
 		
@@ -200,33 +210,38 @@ public class IrakurketakEtaIdazketak {
 		AktoreGuztiak.getNireAktoreak().gehituAktorea(aktoreHau);
 		//Aktoreen zerrenda nagusiaren aktore kopurua gehitu eta gero
 		System.out.println("Aktore kopurua gehitu eta gero: "+AktoreGuztiak.getNireAktoreak().luzera());
+		System.out.println("\nTardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
+
 	}
 		
 	
 	public void aktoreBatenPelikulakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		//Aktorea bilatzen
 		String aktoreIzena = pIdaz.irakurriString("\nSartu  aktorearen izena('Bale, Christian' adibidez):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
 		if(aktoreHau != null){
 			//Aktorearen pelikulen zerrenda hartzen
 			ListaPelikulak peliZerre = aktoreHau.aktorearenPelikulakBueltatu();
 			//Pelikulak zeintzuk diren jakiteko, pantailaratuko dira
-			System.out.println(peliZerre.luzera());
-			System.out.println(PelikulaGuztiak.getNirePelikulak().luzera());
+			System.out.println("Pelikula kopurua: "+peliZerre.luzera());
 			peliZerre.inprimatuGuztiak();
 		}
 		else{
 			
 			System.out.println("\nAktorea ez da aurkitu.\n\n");
 		}
-		
+		System.out.println("\nTardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	public void pelikuaBatekoAktoreakBueltatuMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		//Aldatu nahi den pelikula bilatzen
 		String pelikulaIzena = pIdaz.irakurriString("\nSartu pelikularen izena(Zombie Beer Run adibidez):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
 		
 		if(peliHau != null){
@@ -240,13 +255,16 @@ public class IrakurketakEtaIdazketak {
 			
 			System.out.println("\nPelikula ez da aurkitu.\n\n");
 		}
+		System.out.println("\nTardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	public void pelikulaBatenDiruaGehituMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		//Aldatu nahi den pelikula bilatzen
 		String pelikulaIzena = pIdaz.irakurriString("\nSartu pelikularen izena(Zombie Beer Run adibidez):  ");
-		int	   kantitatea	 = pIdaz.irakurriOsoa("\nSartu zenbat diru gehitu nahi diozu (kantitatea negatiboa bada, "
-				+ "galera izango da:  ");
+		int	   kantitatea	 = pIdaz.irakurriOsoa("\nSartu zenbat diru gehitu nahi diozu (Osoko bat, kantitatea negatiboa bada, "
+				+ "galera izango da):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Pelikula peliHau = PelikulaGuztiak.getNirePelikulak().pelikulaBilatu(pelikulaIzena);
 		
 		if(peliHau != null){
@@ -259,31 +277,40 @@ public class IrakurketakEtaIdazketak {
 			
 			System.out.println("\nPelikula ez da aurkitu.\n\n");
 		}
+		System.out.println("\nTardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 		
 		
 	}
 	
 	public  void AktoreBatenEzabaketaMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		
 		//Borratu nahi den aktorea bilatzen
 		String aktoreIzena = pIdaz.irakurriString("\nSartu ezabatu nahi duzun aktorearen izena('Bale, Christian' adibidez):  ");
+		Stopwatch kronometroa = new Stopwatch();
 		Aktorea aktoreHau = AktoreGuztiak.getNireAktoreak().aktoreaBilatu(aktoreIzena);
 		
 		if(aktoreHau != null){
+			
+			System.out.println("Aktore kopurua ezabaketa baino lehen: "+AktoreGuztiak.getNireAktoreak().luzera());
 			//Jardun duen pelikuletatik kentzen
 			aktoreHau.ezabatuBerePelikuletatik();
 			
 			//Aktore guztien zerrendatik kentzen
 			AktoreGuztiak.getNireAktoreak().ezabatuAktoreenErregistrotik(aktoreHau.getIzena());
+			System.out.println("Aktore kopurua ezabatu eta gero: "+AktoreGuztiak.getNireAktoreak().luzera());
 		}
 		else{
 			
 			System.out.println("\nAktorea ez da aurkitu.\n\n");
 		}
+		System.out.println("\nTardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
 	}
 	public void AktoreenZerrendaIdatziMenu(IrakurketakEtaIdazketak pIdaz){
 		
+		Stopwatch kronometroa = new Stopwatch();
 		pIdaz.AktoreenZerrendaIdatzi();
+		System.out.println("\nTardatutako denbora (kontsolan idatzitakoarekin batera): "+kronometroa.elapsedTime()+" segundu.");
 		System.out.println("\nAktoreen zerrenda proiektu honetako Fitxategiak karpetan gorde da.");
 	}
 	public static void AktoreenZerrendaOrdenatuaMenu(){
@@ -292,8 +319,13 @@ public class IrakurketakEtaIdazketak {
 		
 		ListaAktoreak zerreOrdenatu = AktoreGuztiak.getNireAktoreak().zerrendaOrdenatuaBueltatu();
 		System.out.println("Aktoreen zerrenda ordenatua inprimatuko da: \n\n");
+		
+		double ordenazioDenbora = kronometroa.elapsedTime(); //Ordenatzeko denbora bakarrik
+		
 		zerreOrdenatu.inprimatuAktoreak();
-		System.out.println("Tardatutako denbora: "+kronometroa.elapsedTime()+" segundu.");
+		System.out.println("Tardatutako denbora ordenatzeko: "+ordenazioDenbora+" segundu.");
+		// Ordenatzeko denbora + inprimaketa
+		System.out.println("Tardatutako denbora (ordenazioa + inprimaketa): "+kronometroa.elapsedTime()+" segundu.");
 	}
 	public static void amaieraMenu(){
 		
@@ -302,6 +334,8 @@ public class IrakurketakEtaIdazketak {
 	
 	/***************************************************************************/
 	
+	
+	/***************************************PROGRAMA OSOA PROBATZEKO METODO NAGUSIA****************************************/
 	public static void main(String[] args){
 		
 		IrakurketakEtaIdazketak cHau = new IrakurketakEtaIdazketak(); //Klase honetako metodoei deia egiteko: claseHau
@@ -404,5 +438,5 @@ public class IrakurketakEtaIdazketak {
 		
 		 }//While-aren amaiera
 	}
-
+	/**********************************************************************************************************************/
 }
